@@ -41,12 +41,13 @@
 </body>
 
 <script>
-  let randomNumber = Math.random() * 10;
-
-  const ATTEMPS = 5;
+//el numeor aleatorio que tenia que generar
+  let randomNumber = Math.random() * 100;
+	//los intentos.
+  const ATTEMPTS = 3;
   const guesses = document.querySelector('.guesses');
   const lastResult = document.querySelector('.lastResult');
-  const lowOrHi = document.querySelector('lowOrHi');
+  const lowOrHi = document.querySelector('.lowOrHi');
   const guessSubmit = document.querySelector('.guessSubmit');
   const guessField = document.querySelector('.guessField');
 
@@ -66,7 +67,7 @@
       lastResult.style.backgroundColor = 'black';
       lowOrHi.textContent = '';
       setGameOver();
-    } else if(guessCount === ATTEMPS) {
+    } else if(guessCount === ATTEMPTS) {
       lastResult.textContent = 'Felicitaciones! adivinaste el número!';
       lastResult.style.backgroundColor = 'red';
       setGameOver();
@@ -83,16 +84,21 @@
     guessCount++;
     guessField.value = '';
     guessField.focus();
+    
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  //error en 
+  guessSubmit.addEventListener('click', checkGuess);
+  
 
   function setGameOver() {
+  
 	  guessField.disabled = true;
 	  guessSubmit.disabled = true;
 	  resetButton = document.createElement('button');
 	  resetButton.textContent = 'Comienza un nuevo juego';
 	  document.body.appendChild(resetButton);
-	  resetButton.addeventListener('click', resetGame);
+      //el error
+	  resetButton.addEventListener('click', resetGame);
   }
 
   function resetGame() {
